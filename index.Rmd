@@ -1,6 +1,6 @@
 ---
 title: "dplyr filter homework"
-author: "Your Name"
+author: "Monika Stoljarova"
 date: "2019-03-12"
 output: html_document
 ---
@@ -74,23 +74,26 @@ size_kb <- viruses$size_kb
 ```
 
 ```{r}
-between(size_kb, 1, 2)
+filter(viruses, between(size_kb, 1, 2))
 ```
 
-```{r}
-between(viruses$size_kb, 1, 2)
-```
-
-```{r}
-filter(viruses, between(viruses$size_kb, 1, 2))
-```
-MS: this one worked!!!
 
 
 3. Find Enteroviruses:
 
 Hint: use str_detect()
 ```{r}
-filter( viruses, str_detect(organism_name, "nterovirus" ))
+filter( viruses, str_detect(organism_name, "[Ee]nterovirus" ))
+```
+[Ee] - means it will look for one of these letters, lower or upper case
+
+one other way:
+
+```{r}
+filter( viruses, str_detect(str_to_lower(organism_name), "enterovirus" ))
 ```
 
+str_to_lower - this function normalzes oall the names to small letters
+
+git config --global user.email "monika.stoljarova@ttu.ee"
+git config --global user.name "Monika Stoljarova"
